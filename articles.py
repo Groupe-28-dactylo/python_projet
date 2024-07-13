@@ -80,7 +80,18 @@ def afficher_articles():
     for article in articles:
         print(article)
 
-# Les autres fonctions de gestion d'articles (suppression, recherche, etc.) vont ici
+# Fonction permettant la suppression d'un article
+def supprimer_un_article(nom_article):
+    global articles
+    articles = charger_articles()
+    for article in articles:
+        if article.get("Nom article") == nom_article:
+            articles.remove(article)
+            enregistrer_articles()
+            return True
+    return False
+
+
 
 # Fonctions pour charger et enregistrer les articles
 def enregistrer_articles():
@@ -95,5 +106,3 @@ def charger_articles():
     except FileNotFoundError:
         print("Le fichier articles.json n'existe pas.")
         return []
-
-# Autres fonctions spécifiques à la gestion des articles

@@ -7,6 +7,7 @@ from avis import *
 from remises import *
 from alerte import *
 from recherche import *
+from analyse_produits import *
 
 def menu_principal():
     print("1. Ajouter produit")
@@ -99,12 +100,16 @@ def main():
         elif choix == '15':
             afficher_stocks_par_emplacement()
         elif choix == '16':
-            numArt = int(input("Entrez le numéro de l'article pour afficher les avis : "))
+            numArt = int(input("Entrez le numéro de l'article pour lequel vous voulez ajouter un avis : "))
+            avis = input("Entrez votre avis : ")
+            note = int(input("Entrez votre note (1-5) : "))
+            ajouter_avis(numArt, avis, note)
             afficher_avis(numArt)
         elif choix == '17':
-            numArt = int(input("Entrez le numéro de l'article pour ajouter une remise : "))
-            remise = float(input("Entrez le pourcentage de remise : "))
+            numArt = int(input("Entrez le numéro de l'article pour lequel vous voulez ajouter une remise : "))
+            remise = float(input("Entrez la remise (%) : "))
             ajouter_remise(numArt, remise)
+            afficher_articles_avec_remise()
         elif choix == '18':
             break
         else:
