@@ -14,19 +14,15 @@ def menu_principal():
     print("3. Rechercher produit")
     print("4. Supprimer produit")
     print("5. Enregistrer vente")
-    print("6. Afficher ventes")
-    print("7. Ventes par client")
-    print("8. Générer rapport de ventes")
-    print("9. Charger données")
-    print("10. Afficher historique des modifications de stock")
-    print("11. Recherche par plage de prix")
-    print("12. Alerte de produit en rupture de stock")
-    print("13. Produits les plus vendus")
-    print("14. Produits les moins vendus")
-    print("15. Gestion des stocks multi-emplacements")
-    print("16. Suivi des avis clients")
-    print("17. Gestion des remises et des promotions")
-    print("18. Quitter")
+    print("6. Afficher historique des modifications de stock")
+    print("7. Recherche par plage de prix")
+    print("8. Alerte de produit en rupture de stock")
+    print("9. Produits les plus vendus")
+    print("10. Produits les moins vendus")
+    print("11. Gestion des stocks multi-emplacements")
+    print("12. Suivi des avis clients")
+    print("13. Gestion des remises et des promotions")
+    print("14. Quitter")
     return input("Choisissez une option: ")
 
 def main():
@@ -67,16 +63,8 @@ def main():
             quantite_vendue = int(input("Entrez la quantité vendue : "))
             enregistrer_vente(numArt, quantite_vendue)
         elif choix == '6':
-            print("interface_affichage_ventes()")
-        elif choix == '7':
-            print("interface_ventes_par_client")
-        elif choix == '8':
-            print("generer_rapport_ventes")
-        elif choix == '9':
-            articles = charger_articles()
-        elif choix == '10':
             afficher_historique()
-        elif choix == '11':
+        elif choix == '7':
             prix_min = float(input("Entrez le prix minimum : "))
             prix_max = float(input("Entrez le prix maximum : "))
             resultats = rechercher_par_plage_de_prix(prix_min, prix_max)
@@ -85,31 +73,31 @@ def main():
                     print(resultat)
             else:
                 print(f"Aucun article trouvé dans la plage de prix {prix_min} - {prix_max}")
-        elif choix == '12':
+        elif choix == '8':
             ruptures = alerte_rupture_stock()
             if ruptures:
                 for article in ruptures:
                     print(f"Article en rupture de stock : {article}")
             else:
                 print("Aucun article en rupture de stock.")
-        elif choix == '13':
+        elif choix == '9':
             produits_les_plus_vendus()
-        elif choix == '14':
+        elif choix == '10':
             produits_les_moins_vendus()
-        elif choix == '15':
+        elif choix == '11':
             afficher_stocks_par_emplacement()
-        elif choix == '16':
+        elif choix == '12':
             numArt = int(input("Entrez le numéro de l'article pour lequel vous voulez ajouter un avis : "))
             avis = input("Entrez votre avis : ")
             note = int(input("Entrez votre note (1-5) : "))
             ajouter_avis(numArt, avis, note)
             afficher_avis(numArt)
-        elif choix == '17':
+        elif choix == '13':
             numArt = int(input("Entrez le numéro de l'article pour lequel vous voulez ajouter une remise : "))
             remise = float(input("Entrez la remise (%) : "))
             ajouter_remise(numArt, remise)
             afficher_articles_avec_remise()
-        elif choix == '18':
+        elif choix == '14':
             break
         else:
             print("Choix invalide, veuillez réessayer.")
