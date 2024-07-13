@@ -55,6 +55,7 @@ def ajouter_produits():
         print("Quantité d'article invalide, veuillez réessayer.")
 
     # Générer un numéro d'article unique
+    next_numArt = 0
     numArt = next_numArt
     next_numArt += 1
 
