@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 
 def ajouter_historique(action, article, quantite):
     historique = charger_historique()
