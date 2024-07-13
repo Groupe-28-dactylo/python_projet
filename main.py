@@ -87,7 +87,7 @@ def main():
         elif choix == '11':
             afficher_stocks_par_emplacement()
         elif choix == '12':
-            nomArt = input("Entrez le nom de l'article pour lequel vous voulez ajouter un avis : "))
+            nomArt = input("Entrez le nom de l'article pour lequel vous voulez ajouter un avis : ")
             avis = input("Entrez votre avis : ")
             note = int(input("Entrez votre note (1-5) : "))
             ajouter_avis(nomArt, avis, note)
