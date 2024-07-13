@@ -14,4 +14,7 @@ def rechercher_article_par_id(num_article):
             return article
     return None
 
-# Autres fonctions spécifiques à la recherche d'articles
+def rechercher_par_plage_de_prix(prix_min, prix_max):
+    articles = charger_articles()
+    resultats = [article for article in articles if prix_min <= article["Prix article"] <= prix_max]
+    return resultats
