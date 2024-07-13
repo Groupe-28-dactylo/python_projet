@@ -1,4 +1,4 @@
-from .articles import charger_articles
+from articles import charger_articles
 
 def alerte_rupture_stock():
     articles = charger_articles()

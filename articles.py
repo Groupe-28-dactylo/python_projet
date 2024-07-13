@@ -92,7 +92,6 @@ def supprimer_un_article(nom_article):
     return False
 
 
-
 # Fonctions pour charger et enregistrer les articles
 def enregistrer_articles():
     with open('articles.json', 'w') as f:
