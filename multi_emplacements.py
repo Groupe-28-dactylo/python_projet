@@ -1,3 +1,4 @@
+import json
 def afficher_stocks_par_emplacement():
     stocks = charger_stocks()
     for stock in stocks:
