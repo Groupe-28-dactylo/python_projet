@@ -87,11 +87,11 @@ def main():
         elif choix == '11':
             afficher_stocks_par_emplacement()
         elif choix == '12':
-            numArt = int(input("Entrez le numéro de l'article pour lequel vous voulez ajouter un avis : "))
+            nomArt = input("Entrez le nom de l'article pour lequel vous voulez ajouter un avis : "))
             avis = input("Entrez votre avis : ")
             note = int(input("Entrez votre note (1-5) : "))
-            ajouter_avis(numArt, avis, note)
-            afficher_avis(numArt)
+            ajouter_avis(nomArt, avis, note)
+            afficher_avis(nomArt)
         elif choix == '13':
             numArt = int(input("Entrez le numéro de l'article pour lequel vous voulez ajouter une remise : "))
             remise = float(input("Entrez la remise (%) : "))
