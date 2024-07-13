@@ -1,85 +1,48 @@
 import json
-from historique import ajouter_historique
+from datetime import datetime
 
-articles = []
-next_numArt = 1
+def validation_nom_article(nom_art):
+    return nom_art.isalpha()
 
-def validationNomArticle(nomArt):
-    return nomArt.isalpha()
-
-def validationPrix(prixArt):
+def validation_prix(prix_art):
     try:
-        return float(prixArt)
+        prix = float(prix_art)
+        return prix > 0
     except ValueError:
         return False
 
-def validationQuantite(qteArt):
+def validation_quantite(qte_art):
     try:
-        return int(qteArt)
+        quantite = int(qte_art)
+        return quantite >= 0
     except ValueError:
         return False
 
-def ajouter_produits():
-    global articles, next_numArt
+def ajouter_article():
+    global articles, next_num_art
     articles = charger_articles()
 
     while True:
-        nomArt = input("Saisir le nom de l'article : ")
-        if validationNomArticle(nomArt):
-            if any(article['Nom article'] == nomArt for article in articles):
-                print("Un article avec ce nom existe déjà, veuillez en saisir un autre.")
+        nom_art = input("Saisir le nom de l'article : ")
+        if validation_nom_article(nom_art):
+            if any(article['Nom article'] == nom_art for article in articles):
+                print("Un article avec ce nom existe déjà.")
             else:
                 break
         else:
-            print("Nom d'article invalide, veuillez réessayer.")
-    
-    while True:
-        prixArt = input("Saisir le prix de l'article : ")
-        prixArt = validationPrix(prixArt)
-        if prixArt:
-            break
-        print("Prix d'article invalide, veuillez réessayer.")
-    
-    while True:
-        qteArt = input("Saisir la quantité de l'article : ")
-        qteArt = validationQuantite(qteArt)
-        if qteArt:
-            break
-        print("Quantité d'article invalide, veuillez réessayer.")
+            print("Nom d'article invalide.")
 
-    numArt = next_numArt
-    next_numArt += 1
+    # Ajouter le reste de la logique d'ajout ici
 
-    article = {
-        "Numero article": numArt,
-        "Nom article": nomArt,
-        "Prix article": prixArt,
-        "Quantite article": qteArt
-    }
-
-    articles.append(article)
-    enregistrer_articles()
-
-def afficher_produits():
+def afficher_articles():
     global articles
     articles = charger_articles()
     for article in articles:
         print(article)
 
-def rechercher_article_par_nom(nom_article):
-    articles = charger_articles()
-    for article in articles:
-        if article.get("Nom article") == nom_article:
-            return article
-    return None
+# Les autres fonctions de gestion d'articles (suppression, recherche, etc.) vont ici
 
-def rechercher_article_par_ID(num_article):
-    articles = charger_articles()
-    for article in articles:
-        if article.get("Numero article") == num_article:
-            return article
-    return None
-
+# Fonctions pour charger et enregistrer les articles
 def enregistrer_articles():
     with open('articles.json', 'w') as f:
         json.dump(articles, f, indent=4)
@@ -93,25 +56,4 @@ def charger_articles():
         print("Le fichier articles.json n'existe pas.")
         return []
 
-def supprimer_un_article(nom_article):
-    global articles
-    articles = charger_articles()
-    for article in articles:
-        if article.get("Nom article") == nom_article:
-            articles.remove(article)
-            enregistrer_articles()
-            return True
-    return False
-
-def rechercher_par_plage_de_prix(prix_min, prix_max):
-    articles = charger_articles()
-    resultats = []
-    for article in articles:
-        if prix_min <= article["Prix article"] <= prix_max:
-            resultats.append(article)
-    return resultats
-
-def alerte_rupture_stock():
-    articles = charger_articles()
-    ruptures = [article for article in articles if article["Quantite article"] == 0]
-    return ruptures
+# Autres fonctions spécifiques à la gestion des articles
