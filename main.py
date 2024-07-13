@@ -5,6 +5,7 @@ from utils import *
 from multi_emplacements import *
 from avis import *
 from remises import *
+from alerte import *
 
 def menu_principal():
     print("1. Ajouter produit")
@@ -34,9 +35,9 @@ def main():
     while True:
         choix = menu_principal()
         if choix == '1':
-            ajouter_produits()
+            ajouter_article()
         elif choix == '2':
-            afficher_produits()
+            afficher_articles()
         elif choix == '3':
             type_recherche = int(input("Comment voulez-vous effectuer la recherche\n 1.Par nom \n 2.Par ID \n : "))
             if type_recherche == 1:

@@ -1,12 +1,13 @@
 import json
 from datetime import datetime
 
-def ajouter_historique(action, article, quantite):
+def ajouter_historique(numArt, nomArt, ancienne_quantite, nouvelle_quantite):
     historique = charger_historique()
     modification = {
-        "Action": action,
-        "Article": article,
-        "Quantite": quantite,
+        "Numero article": numArt,
+        "Nom article": nomArt,
+        "Ancienne quantite": ancienne_quantite,
+        "Nouvelle quantite": nouvelle_quantite,
         "Date": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
     historique.append(modification)
@@ -24,3 +25,8 @@ def charger_historique():
     except FileNotFoundError:
         print("Le fichier historique.json n'existe pas.")
         return []
+
+def afficher_historique():
+    historique = charger_historique()
+    for modification in historique:
+        print(modification)
