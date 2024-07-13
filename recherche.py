@@ -1,4 +1,4 @@
-from .articles import charger_articles
+from articles import charger_articles
 
 def rechercher_article_par_nom(nom_article):
     articles = charger_articles()

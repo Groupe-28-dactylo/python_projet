@@ -1,7 +1,6 @@
 from articles import *
 from ventes import *
 from historique import *
-from utils import *
 from multi_emplacements import *
 from avis import *
 from remises import *
